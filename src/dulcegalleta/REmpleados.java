@@ -17,11 +17,17 @@ public class REmpleados extends javax.swing.JFrame {
      */
     public REmpleados() {
         initComponents();
+        
     }
-    
+     RVentas ventas_up = new RVentas();
     ArrayList<empleados> empleado = new ArrayList<>();
     String xRut ="", xDv = "",nombre ="", apellido="",direccion="",telefono="",mail="";
-
+    
+    empleados emp1 = new empleados("184346494","maria antonieta","de las nieves","La vecindad","56543456","maria@correo.cl");
+    empleados emp2 = new empleados("244204562","Julieta","venegas","guanajuato 133","98745621","julieta@correo.cl");
+    empleados emp3 = new empleados("267896491","Lady","gaga","eeuu 551","133133654","gaga@correo.cl");
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,6 +54,13 @@ public class REmpleados extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jT_DV = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Registro de empleados");
@@ -199,6 +212,13 @@ public class REmpleados extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel8.setText("-");
 
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -226,7 +246,9 @@ public class REmpleados extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(68, 68, 68)
-                        .addComponent(jB_RegisEmp))
+                        .addComponent(jB_RegisEmp)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,48 +266,54 @@ public class REmpleados extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jT_Rut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jT_DV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jT_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jT_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel5)
+                            .addComponent(jLabel2)
+                            .addComponent(jT_Rut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jT_DV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel7))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jT_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jT_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jT_Mail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jB_RegisEmp)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jT_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jT_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(15, 15, 15)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel4)
+                                .addGap(24, 24, 24)
+                                .addComponent(jLabel7))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(jT_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jT_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jT_Mail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jB_RegisEmp)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(14, 14, 14))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     private void jT_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jT_NombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jT_NombreActionPerformed
@@ -333,7 +361,12 @@ public class REmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_jT_DVKeyTyped
 
     private void jT_RutKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jT_RutKeyReleased
-
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            if(!"".equals(jT_Rut.getText())){
+                
+                jT_DV.requestFocus();
+            }
+        }
     }//GEN-LAST:event_jT_RutKeyReleased
 
     private void jT_DVKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jT_DVKeyReleased
@@ -341,10 +374,19 @@ public class REmpleados extends javax.swing.JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){
             xRut = jT_Rut.getText();
             xDv = jT_DV.getText();
-            if(isValidRut(xRut+ xDv)){
-                jT_Nombre.setEnabled(true);
-                jT_Nombre.requestFocus();
+            if(isValidRut(xRut+ xDv)){ 
+                    if (VerificaEmpleado(xRut+ xDv)){
+                        jT_Rut.setText("");
+                        jT_DV.setText("");
+                        jT_Rut.requestFocus();
+                    } else{
+                        jT_Nombre.setEnabled(true);
+                        jT_Nombre.requestFocus();
+                    }
+                
+                
                // Mensaje("Rut Valido");
+               
             }else{
                 Mensaje("Rut invalido");
                 xRut = "";
@@ -431,6 +473,18 @@ public class REmpleados extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        cargaEmpleados();
+    }//GEN-LAST:event_formWindowActivated
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        MuestraAlumos();
+        System.exit(0);
+        
+    
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -462,8 +516,9 @@ public class REmpleados extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new REmpleados().setVisible(true);
-            }
+                            }
         });
+        
         
     }
  
@@ -514,14 +569,52 @@ public class REmpleados extends javax.swing.JFrame {
 
     }
     
-    public void VerificaEmpleado(){
-        
+    public boolean VerificaEmpleado(String xRut){
+        boolean encontrado = false;
+       // if(!empleado.isEmpty()){
+            
+          //  empleados em = new empleados();
+            String nomb ="";
+            
+            for (int x = 0 ; x <= empleado.size()-1; x++) {
+                   String p = empleado.get(x).getRut();
+                    if (p.equals(xRut)) {
+                            encontrado = true;
+                            nomb = empleado.get(x).getNombre();
+                                Mensaje("empleado ya existe => " + nomb.toUpperCase());
+                            break; // Terminar ciclo, pues ya lo encontramos
+                    }
+            }
+
+       // }
+        return encontrado;
+    }
+    
+    public void cargaEmpleados(){
+        empleado.add(emp1);
+        empleado.add(emp2);
+        empleado.add(emp3);
+
+        RVentas ok = new RVentas();
+        ok.empleado.add(emp1);
+        ok.empleado.add(emp2);
+        ok.empleado.add(emp3);
+        //ok.empleado.add(emp1);
     }
     
     public void Mensaje(String mnsj){
         
         JFrame saje = new JFrame();
         JOptionPane.showMessageDialog(rootPane, mnsj);
+        
+    }
+    public void MuestraAlumos(){
+        
+        for(int i=0; i <= empleado.size()-1;i ++){
+            
+             System.out.println("Alumno creado :" + empleado.get(i).getNombre());
+
+        }
         
     }
     
@@ -544,6 +637,7 @@ public class REmpleados extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jB_RegisEmp;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
