@@ -33,6 +33,12 @@ public class Principal extends javax.swing.JFrame {
         jB_ventas1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel1.setText("REGISTRO DE DULCE GALLETA");
@@ -109,6 +115,8 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jB_ventas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_ventas1ActionPerformed
+        REmpleados empl = new REmpleados();
+        empl.setVisible(false);
         RVentas ventas = new RVentas();
         ventas.setVisible(true);
     }//GEN-LAST:event_jB_ventas1ActionPerformed
@@ -119,6 +127,15 @@ public class Principal extends javax.swing.JFrame {
         empleados.setVisible(true);
         
     }//GEN-LAST:event_jB_empleadoActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+       
+//        RVentas ventas = new RVentas();
+//        REmpleados empledos = new REmpleados();
+//        empledos.setVisible(false);
+//        ventas.setVisible(false);
+        
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
